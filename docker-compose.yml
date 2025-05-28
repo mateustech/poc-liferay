@@ -1,0 +1,20 @@
+version: "2.1"
+
+services:
+  liferay:
+    # image: liferay/dxp:7.4.13-u92 // TODO: Need license
+    image: liferay/portal:7.4.3.70-ga70
+    container_name: liferay
+    ports:
+      - "8080:8080"
+      - "11311:11311"
+    environment:
+      - LIFERAY_PASSWORD=password
+      - LIFERAY_USERNAME=admin@liferay.com
+      - LIFERAY_DATABASE_NAME=lportal
+    volumes:
+      - liferay_data:/opt/liferay/data
+      - ./deploy:/mnt/liferay/deploy
+
+volumes:
+  liferay_data:
